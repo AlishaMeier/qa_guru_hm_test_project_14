@@ -1,0 +1,43 @@
+# Byte-code files
+*.pyc
+__pycache__/
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.bak
+*.swo
+
+# Test/Coverage files
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# Distribution packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook specific files
+.ipynb_checkpoints/
+
+.env
