@@ -57,7 +57,7 @@ def remote_browser_setup():
 
 @pytest.fixture(autouse=True)
 def setup_browser(remote_browser_setup):
-    base_url = os.getenv("BYBIT_BASE_URL", "https://www.bybit.com")
+    base_url = os.getenv("BASE_URL", "https://capital.com/ru-int")
     browser.config.base_url = base_url
     browser.config.timeout = 5
     browser.config.window_width = 1920

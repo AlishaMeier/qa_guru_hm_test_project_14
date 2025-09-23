@@ -1,0 +1,19 @@
+{
+  "base": {
+    "project": "Homework13_21",
+    "environment": "Staging",
+    "comment": "✅ Here are the latest test results:",
+    "reportLink": "allure/",
+    "language": "en",
+    "allureFolder": "allure-report",
+    "enableChart": true,
+    "enableSuitesPublishing": true,
+    "durationFormat": "HH:mm:ss.SSS",
+    "logo": "logo.png"
+  },
+  "telegram": {
+    "token": "...",
+    "chat": "...",
+    "replyTo": ""
+  }
+}
