@@ -8,7 +8,7 @@ from pages.login_page import LoginPage
 @allure.feature("Authorization via Email")
 class TestLogin:
 
-    @allure.story("Успешный вход")
+    @allure.story("Succesful login")
     def test_successful_login(self):
         login_page = LoginPage()
         login_page.open() \
@@ -17,7 +17,7 @@ class TestLogin:
             .submit() \
             .should_be_logged_in()
 
-    @allure.story("Неверный пароль")
+    @allure.story("Invalid password")
     def test_invalid_password(self):
         login_page = LoginPage()
         login_page.open() \
@@ -26,7 +26,7 @@ class TestLogin:
             .submit() \
             .should_see_error("Неверный логин или пароль")
 
-    @allure.story("Пустое поле email")
+    @allure.story("Empty email field")
     def test_empty_email(self):
         login_page = LoginPage()
         login_page.open() \
@@ -34,7 +34,7 @@ class TestLogin:
             .submit() \
             .should_see_error("Введите адрес электронной почты")
 
-    @allure.story("Пустое поле пароль")
+    @allure.story("Empty pass field")
     def test_empty_password(self):
         login_page = LoginPage()
         login_page.open() \
@@ -42,7 +42,7 @@ class TestLogin:
             .submit() \
             .should_see_error("Введите пароль")
 
-    @allure.story("Некорректный email")
+    @allure.story("Invalid email")
     def test_invalid_email_format(self):
         login_page = LoginPage()
         login_page.open() \
@@ -51,7 +51,7 @@ class TestLogin:
             .submit() \
             .should_see_error("Введите корректный адрес электронной почты")
 
-    @allure.story("Чекбокс 'Выйти через 7 дней'")
+    @allure.story("Checkbox 'Выйти через 7 дней'")
     def test_toggle_remember_me(self):
         login_page = LoginPage()
         login_page.open() \
@@ -61,7 +61,7 @@ class TestLogin:
             .submit() \
             .should_be_logged_in()
 
-    @allure.story("Ссылка 'Забыли пароль?'")
+    @allure.story("Link 'Забыли пароль?'")
     def test_forgot_password_link(self):
         login_page = LoginPage()
         login_page.open()
