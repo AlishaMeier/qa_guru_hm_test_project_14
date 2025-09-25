@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "qa-fstravel-project"
+version = "0.1.0"
+description = "Autotests for fstravel.com"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.2.2"
+selene = "^2.0.0"
+allure-pytest = "^2.13.5"
+python-dotenv = "^1.0.1"
+pydantic-settings = "^2.3.4"

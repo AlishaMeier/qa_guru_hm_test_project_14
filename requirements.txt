@@ -1,5 +1,0 @@
-pytest
-selene>=2.0.0rc4
-python-dotenv
-allure-pytest
-selenium
