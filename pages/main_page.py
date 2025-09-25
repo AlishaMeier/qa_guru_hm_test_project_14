@@ -4,12 +4,7 @@ from selene import browser, by, be, have
 
 class MainPage:
     def __init__(self):
-        # ... (остальные локаторы без изменений) ...
-        self.destination_dropdown = browser.element('#b_s_c_container')
-        self.search_button = browser.element('#b_s_submit')
-
-        # --- ТОЧНЫЙ ЛОКАТОР для кнопки закрытия поп-апа ---
-        self.luck_popup_close_button = browser.element('.fl-close-x')
+        self.popups_css = 'body > div'
 
     # --- Методы без изменений ---
     @allure.step("Выбрать страну назначения: {country_name}")
@@ -20,11 +15,28 @@ class MainPage:
     def search_tours(self):
         pass
 
-    # --- ОБНОВЛЕННЫЙ МЕТОД для закрытия поп-апа ---
-    @allure.step("Закрыть поп-ап 'Испытайте удачу', если он появился")
-    def close_luck_popup_if_present(self):
-        # Если кнопка закрытия существует на странице, нажать на нее.
-        # Selene сама подождет появления элемента в течение таймаута.
-        # Если элемент не появится, тест не упадет, а просто пойдет дальше.
-        if self.luck_popup_close_button.with_(timeout=5).wait_until(be.visible):
-            self.luck_popup_close_button.click()
+    def close_all_popups(self):
+        """
+        Закрывает все поп-апы:
+        - с кнопкой/крестиком
+        - модалки подписки (кликаем вне зоны модалки)
+        """
+        while True:
+            popups = browser.all(self.popups_css).filtered_by(be.visible)
+            if not popups:
+                break  # если нет видимых попапов — выходим
+
+            for popup in popups:
+                try:
+                    # 1. пробуем закрыть кнопкой
+                    close_button = popup.element('button, .close, .v-modal__close')
+                    if close_button.matching(be.visible):
+                        close_button.click()
+                        popup.should(be.absent)
+                        continue
+
+                    # 2. если кнопки нет — кликаем в фон страницы
+                    browser.element('body').click()
+                    popup.should(be.absent)
+                except Exception:
+                    continue

@@ -3,11 +3,11 @@ import allure
 
 class LoginPage:
     def __init__(self):
-        self.header_login_icon = browser.element('.header__right .auth__user-icon')
-        self.modal = browser.element('.div-modal.div-modal-auth-new')
-        self.email_input = self.modal.element('[name=email]')
-        self.password_input = self.modal.element('[name=password]')
-        self.submit_button = self.modal.element('button.new-button__primary')
+        self.header_login_icon = browser.element('.v-icon-user-14')
+#        self.modal = browser.element('.div-modal.div-modal-auth-new')
+        self.email_input = browser.element('#email')
+        self.password_input = browser.element('#password')
+        self.submit_button = browser.element('form input[type="submit"]')
 
     @allure.step("Выполняем вход пользователя с email: {email}")
     def login(self, email, password):

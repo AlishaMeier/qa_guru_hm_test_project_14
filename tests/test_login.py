@@ -24,8 +24,8 @@ def test_successful_login(setup_browser):
     with allure.step("Открыть главную страницу"):
         browser.open('/')
 
-    with allure.step("Закрываем поп-ап 'Колесо удачи', если он появился"):
-        main_page.close_luck_popup_if_present() # <-- Теперь эта строка сработает
+    with allure.step("Закрыть все поп-апы, если появились"):
+        main_page.close_all_popups()
 
     with allure.step("Выполнить вход в систему"):
         login_page.login(login_email, login_password)

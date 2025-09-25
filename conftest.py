@@ -15,6 +15,8 @@ def load_env():
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser():
     options = Options()
+    chrome_options.add_argument("--disable-notifications")  # иногда работает
+    chrome_prefs = {"profile.default_content_setting_values.notifications": 2}
     selenoid_url = os.getenv("SELENOID_URL")
     selenoid_login = os.getenv("SELENOID_LOGIN")
     selenoid_pass = os.getenv("SELENOID_PASS")
